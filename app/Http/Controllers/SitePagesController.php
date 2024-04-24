@@ -7,6 +7,7 @@ use App\Models\events;
 use App\Models\gallery;
 use App\Models\news;
 use App\Models\service;
+use App\Models\school;
 use App\Models\verse;
 use App\Models\PhotoLibrary;
 use App\Models\VideoLibrary;
@@ -21,7 +22,7 @@ class SitePagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function catholic_diocese()
-    { 
+    {
         $news = news::latest('id')->limit(4)->get();
         $events = events::latest('id')->limit(4)->get();
         $gallery_photo = gallery::all()->where('category', '=', 'Photo');
@@ -42,7 +43,8 @@ class SitePagesController extends Controller
     }
 
     public function schools(){
-        return view('pages.schools');
+        $schools = school::all();
+        return view('pages.schools',compact('schools'));
     }
 
     public function healths(){
@@ -54,7 +56,7 @@ class SitePagesController extends Controller
         $latest = news::latest('id')->limit(7)->get();
         return View('pages.single_news', compact('news', 'latest'));
     }
-    
+
     public function single_events($id){
         $events = events::find($id);
         $latest = events::latest('id')->limit(7)->get();
@@ -83,19 +85,19 @@ class SitePagesController extends Controller
     }
 
     public function singleandnews(){
-       
+
         return View('pages.single_news');
     }
 
     public function gallery()
     {
         $photosLibrary = PhotoLibrary::orderBy('date', 'desc')->get();
-    
+
         return view('pages.gallery', [
             'photosLibrary' => $photosLibrary,
         ]);
     }
-    
+
 
     public function video(){
         $videoLibrary = VideoLibrary::orderBy('date', 'desc')->get();;

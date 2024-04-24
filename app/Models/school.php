@@ -15,5 +15,7 @@ class school extends Model
         'image',
         'p_o_box',
         'location',
+        'description',
+        'website_link'
     ];
 }

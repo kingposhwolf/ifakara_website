@@ -27,7 +27,7 @@ class SchoolsController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -50,6 +50,9 @@ class SchoolsController extends Controller
         $school->p_o_box = $request->input('p_o_box');
         $school->head = $request->input('head');
         $school->location = $request->input('location');
+        $school->description = $request->input('description');
+        $school->website_link = $request->input('website_link');
+
         if($school->save()){
             return redirect('/admin/school')->with('status', 'School Added SuccessFully!');
         }
@@ -95,7 +98,7 @@ class SchoolsController extends Controller
             }
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;    
+            $filename = time().'.'.$ext;
             $file->move('admin/assets/images/school',$filename);
             $school->image = $filename;
         }
@@ -103,6 +106,9 @@ class SchoolsController extends Controller
         $school->p_o_box = $request->input('p_o_box');
         $school->head = $request->input('head');
         $school->location = $request->input('location');
+        $school->description = $request->input('description');
+        $school->website_link = $request->input('website_link');
+        
         $school->update();
         return redirect('/admin/school')->with('status', 'School was Updated successfully!');
     }

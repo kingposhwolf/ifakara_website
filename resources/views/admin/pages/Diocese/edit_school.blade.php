@@ -74,16 +74,25 @@
                                                         <input type="text" class="form-control" id="name"
                                                         name="p_o_box" value="{{ $school->p_o_box }}">
                                                     </div>
+                                                    <div class="mb-3 col-12">
+                                                        <label for="name" class="form-label">Website Link</label>
+                                                        <input type="text" class="form-control" id="name"
+                                                            placeholder="Enter School Website link" name="website_link" value="{{ $school->website_link }}">
+                                                    </div>
+                                                    <div class="col-12 mb-3">
+                                                        <label for="company" class="form-label">Description</label>
+                                                        <textarea name="description" id="" cols="12" rows="5" class="form-control" required>{{ $school->description }}</textarea>
+                                                    </div>
                                                     <div class="text-end">
                                                         <button type="submit" class="bg-info p-2">Publish </button>
                                                     </div>
                                                 </div>
-                                    
+
                                             </form>
                                         </div> <!-- end col -->
                                     </div>
                                     <!-- end row-->
-    
+
                                 </div>
                                 <!-- end card-body-->
                             </div>

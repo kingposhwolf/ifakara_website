@@ -74,38 +74,46 @@
                                                     <th>Head of School</th>
                                                     <th>Location</th>
                                                     <th>P. O. Box</th>
+                                                    <th>Description</th>
+                                                    <th>Website Link</th>
                                                     <th style="width: 82px;">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($schools as $school)
                                                 <tr>
-                                                 <td class="table-user">
-                                                     {{ $school->id }}
+                                                <td class="table-user">
+                                                    {{ $school->id }}
+                                                </td>
+                                                <td>
+                                                    {{ $school->name }}
+                                                </td>
+                                                <td>
+                                                    <img src="{{ asset('admin/assets/images/school/' . $school->image) }}" alt="table-user"
+                                                    class="me-2" width="100px" height="50px">
+                                                </td>
+                                                <td>
+                                                    {{ $school->head }}
+                                                </td>
+                                                <td>
+                                                    {{ $school->location }}
+                                                </td>
+                                                <td>
+                                                    {{ $school->p_o_box }}
+                                                </td>
+                                                <td>
+                                                    {{ $school->description }}
+                                                </td>
+                                                <td>
+                                                    {{ $school->website_link }}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url('admin/edit_school/'. $school->id) }}" class="action-icon"> <i
+                                                            class="mdi mdi-square-edit-outline"></i></a>
+                                                    <a href="{{ url('admin/delete_school/'.$school->id) }}" onclick="return confirm('Are you sure you want to delete?');" class="action-icon"> <i
+                                                            class="mdi mdi-delete"></i></a>
                                                  </td>
-                                                 <td>
-                                                     {{ $school->name }}
-                                                 </td>
-                                                 <td>
-                                                     <img src="{{ asset('admin/assets/images/school/' . $school->image) }}" alt="table-user"
-                                                     class="me-2" width="100px" height="50px">
-                                                 </td>
-                                                 <td>
-                                                     {{ $school->head }}
-                                                 </td>
-                                                 <td>
-                                                     {{ $school->location }}
-                                                 </td>
-                                                 <td>
-                                                     {{ $school->p_o_box }}
-                                                 </td>
-                                                 <td>
-                                                     <a href="{{ url('admin/edit_school/'. $school->id) }}" class="action-icon"> <i
-                                                             class="mdi mdi-square-edit-outline"></i></a>
-                                                     <a href="{{ url('admin/delete_school/'.$school->id) }}" onclick="return confirm('Are you sure you want to delete?');" class="action-icon"> <i
-                                                             class="mdi mdi-delete"></i></a>
-                                                 </td>
-                                             </tr> 
+                                             </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -189,12 +197,21 @@
                                         <input type="text" class="form-control" id="name"
                                             placeholder="Enter School Location" name="p_o_box">
                                     </div>
-    
+                                    <div class="mb-3 col-12">
+                                        <label for="name" class="form-label">Website Link</label>
+                                        <input type="text" class="form-control" id="name"
+                                            placeholder="Enter School Website link" name="website_link">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="company" class="form-label">Description</label>
+                                        <textarea name="description" id="" cols="12" rows="5" class="form-control" required></textarea>
+                                    </div>
+
                                     <div class="text-end">
                                         <button type="submit" class="bg-info p-2">Publish </button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
