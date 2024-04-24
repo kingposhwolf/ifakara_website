@@ -7,6 +7,13 @@
 <body class="loading"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
+    @if(Session::has('status'))
+        <div class="alert {{ Session::get('status_class') }} alert-dismissible fade show" role="alert" style="position: fixed; top: 10%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ Session::get('status') }}
+        </div>
+    @endif
+
     <!-- Begin page -->
     <div id="wrapper">
         <!-- Topbar Start -->
@@ -165,7 +172,7 @@
                                 </div>
                                 <div class="row mt-1 text-center">
                                     <div class="col-6">
-                                        <a href="{{ url('admin/update_staff/'.$exactive_staff->id) }}" class="action-icon"> <i
+                                        <a href="{{ url('admin/edit_staff/'.$exactive_staff->id) }}" class="action-icon"> <i
                                                 class="mdi mdi-square-edit-outline"></i></a>
 
                                     </div>
@@ -291,6 +298,18 @@
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+
+    <script>
+        document.addEventListener('click', function(event) {
+            var alert = document.querySelector('.alert');
+            if(alert && event.target.closest('.alert')) {
+                alert.classList.add('hide');
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+            }
+        });
+    </script>
 
 </body>
 

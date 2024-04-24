@@ -7,6 +7,13 @@
 <body class="loading"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
+    @if(Session::has('status'))
+        <div class="alert {{ Session::get('status_class') }} alert-dismissible fade show" role="alert" style="position: fixed; top: 10%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ Session::get('status') }}
+        </div>
+    @endif
+
     <!-- Begin page -->
     <div id="wrapper">
         <!-- Topbar Start -->
@@ -155,9 +162,9 @@
                 <div class="row">
                     @foreach ($management as $management)
                     <div class="col-lg-3">
-                        
+
                         <div class="card">
-                            
+
                             <div class="card-body">
                                 <div class="text-center">
                                     <img src="{{ asset('admin/assets/images/staff/'. $management->image) }}" height="150px" width="150px" alt="logo"
@@ -177,10 +184,10 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div> <!-- end card -->
-                        
-                        
+
+
                     </div><!-- end col -->
                     @endforeach
                 </div>
@@ -298,6 +305,21 @@
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+
+    <script>
+        // Auto-hide alert when clicked anywhere on the page
+        document.addEventListener('DOMContentLoaded', function() {
+            var alert = document.querySelector('.alert');
+            if(alert) {
+                alert.addEventListener('click', function() {
+                    this.classList.add('fade');
+                    setTimeout(() => {
+                        this.remove();
+                    }, 500);
+                });
+            }
+        });
+    </script>
 
 </body>
 

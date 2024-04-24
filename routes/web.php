@@ -45,7 +45,7 @@ Route::get('/',[HomeController::class, 'index']);
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/admin_login',[LoginController::class, 'Admin_Login'])->name('admin_login');
 Route::post('/signout', [LoginController::class, 'signOut'])->name('signout');
-Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard'); 
+Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
 
 //site controllers
 Route::get('/catholic_diocese',[SitePagesController::class, 'catholic_diocese'])->name('catholic_diocese');
@@ -63,7 +63,7 @@ Route::get('/news_events',[SitePagesController::class, 'news_event'])->name('new
 Route::get ('/gallery',[SitePagesController::class, 'gallery'])->name('album_picha');
 Route::get('/video',[SitePagesController::class,'video'])->name('maktaba_video');
 Route::get('/careers',[SitePagesController::class,'careers'])->name('careers');
-// news site 
+// news site
 Route::get('/single_news/{id}',[SitePagesController::class, 'news_single'])->name('single_news');
 Route::get('/single_events/{id}',[SitePagesController::class, 'single_events'])->name('single_events');
 Route::get('/single_service_education/{id}',[SitePagesController::class, 'single_service_education'])->name('single_service_education');
@@ -192,7 +192,7 @@ Route::delete('/admin/library/photos/{id}',[LibraryController::class,'destroy'])
 Route::get('/admin/feedback',[FeedbackController::class,'index'])->name('feedback');
 Route::post('/add_feedback',[FeedbackController::class, 'store'])->name('add_feedback');
 
-//library 
+//library
 
 });
 

@@ -7,6 +7,13 @@
 <body class="loading"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
+    @if(Session::has('status'))
+        <div class="alert {{ Session::get('status_class') }} alert-dismissible fade show" role="alert" style="position: fixed; top: 10%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ Session::get('status') }}
+        </div>
+    @endif
+
     <!-- Begin page -->
     <div id="wrapper">
         <!-- Topbar Start -->
@@ -130,6 +137,14 @@
                 <!-- end page title -->
 
                 <div class="row">
+                    <div class="container-fluid">
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="page-title mb-3">Executive Staff</h5>
+                            </div>
+                        </div>
+                    </div>
                     @foreach ($exactive_historical_staff as $exactive_historical_staff)
                     <div class="col-lg-3">
                         <div class="card">
@@ -142,7 +157,7 @@
                                 </div>
                                 <div class="row mt-1 text-center">
                                     <div class="col-6">
-                                        <a href="{{ url('admin/update_staff/'.$exactive_historical_staff->id) }}" class="action-icon"> <i
+                                        <a href="{{ url('admin/edit_staff/'.$exactive_historical_staff->id) }}" class="action-icon"> <i
                                                 class="mdi mdi-square-edit-outline"></i></a>
 
                                     </div>
@@ -156,6 +171,14 @@
                     </div><!-- end col -->
                     @endforeach
                     <hr>
+                    <div class="container-fluid">
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="page-title mb-3">Management Staff</h5>
+                            </div>
+                        </div>
+                    </div>
                     @foreach ($management_historical_staff as $management_historical_staff)
                     <div class="col-lg-3">
                         <div class="card">
@@ -168,7 +191,7 @@
                                 </div>
                                 <div class="row mt-1 text-center">
                                     <div class="col-6">
-                                        <a href="{{ url('admin/update_staff/'.$management_historical_staff->id) }}" class="action-icon"> <i
+                                        <a href="{{ url('admin/edit_staff/'.$management_historical_staff->id) }}" class="action-icon"> <i
                                                 class="mdi mdi-square-edit-outline"></i></a>
 
                                     </div>
