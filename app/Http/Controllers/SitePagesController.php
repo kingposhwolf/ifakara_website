@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use App\Models\events;
 use App\Models\gallery;
+use App\Models\health_institute;
 use App\Models\news;
 use App\Models\service;
 use App\Models\school;
@@ -48,7 +49,8 @@ class SitePagesController extends Controller
     }
 
     public function healths(){
-        return view('pages.healths');
+        $hospitals = health_institute::all();
+        return view('pages.healths', compact('hospitals'));
     }
 
     public function news_single($id){

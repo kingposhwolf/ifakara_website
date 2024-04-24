@@ -15,5 +15,7 @@ class health_institute extends Model
         'image',
         'p_o_box',
         'location',
+        'description',
+        'website_link'
     ];
 }

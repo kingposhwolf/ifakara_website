@@ -50,6 +50,9 @@ class HealthsController extends Controller
         $health_institute->p_o_box = $request->input('p_o_box');
         $health_institute->head = $request->input('head');
         $health_institute->location = $request->input('location');
+        $health_institute->description = $request->input('description');
+        $health_institute->website_link = $request->input('website_link');
+
         if($health_institute->save()){
             return redirect('/admin/health')->with('status', 'Health Institute Added SuccessFully!');
         }
@@ -95,7 +98,7 @@ class HealthsController extends Controller
             }
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;    
+            $filename = time().'.'.$ext;
             $file->move('admin/assets/images/health',$filename);
             $health_institute->image = $filename;
         }
@@ -103,6 +106,9 @@ class HealthsController extends Controller
         $health_institute->p_o_box = $request->input('p_o_box');
         $health_institute->head = $request->input('head');
         $health_institute->location = $request->input('location');
+        $health_institute->description = $request->input('description');
+        $health_institute->website_link = $request->input('website_link');
+
         $health_institute->update();
         return redirect('/admin/health')->with('status', 'Health Institute was Updated successfully!');
     }

@@ -74,12 +74,14 @@
                                                     <th>Head of Institute</th>
                                                     <th>Location</th>
                                                     <th>P. O. Box</th>
+                                                    <th>Description</th>
+                                                    <th>Website Link</th>
                                                     <th style="width: 82px;">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               @foreach ($health_institutes as $health_institute)
-                                               <tr>
+                                            @foreach ($health_institutes as $health_institute)
+                                            <tr>
                                                 <td class="table-user">
                                                     {{ $health_institute->id }}
                                                 </td>
@@ -100,12 +102,18 @@
                                                     {{ $health_institute->p_o_box }}
                                                 </td>
                                                 <td>
+                                                    {{ $health_institute->description }}
+                                                </td>
+                                                <td>
+                                                    {{ $health_institute->website_link }}
+                                                </td>
+                                                <td>
                                                     <a href="{{ url('admin/edit_health/'. $health_institute->id) }}" class="action-icon"> <i
                                                             class="mdi mdi-square-edit-outline"></i></a>
                                                     <a href="{{ url('admin/delete_health/'.$health_institute->id) }}" onclick="return confirm('Are you sure you want to delete?');" class="action-icon"> <i
                                                             class="mdi mdi-delete"></i></a>
                                                 </td>
-                                            </tr> 
+                                            </tr>
                                                @endforeach
                                             </tbody>
                                         </table>
@@ -172,7 +180,7 @@
                                     <div class="mb-3 col-12">
                                         <label for="exampleInputEmail1" class="form-label">Image</label>
                                         <input type="file" class="form-control" id="exampleInputEmail1"
-                                             name="image">
+                                            name="image">
                                     </div>
                                     <div class="mb-3 col-12">
                                         <label for="name" class="form-label">Head Of Center</label>
@@ -189,11 +197,20 @@
                                         <input type="text" class="form-control" id="name"
                                             placeholder="Enter Health P. O. Box" name="p_o_box">
                                     </div>
+                                    <div class="mb-3 col-12">
+                                        <label for="name" class="form-label">Website Link</label>
+                                        <input type="text" class="form-control" id="name"
+                                            placeholder="Enter Hospital Website link" name="website_link">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="company" class="form-label">Description</label>
+                                        <textarea name="description" id="" cols="12" rows="5" class="form-control" required></textarea>
+                                    </div>
                                     <div class="text-end">
                                         <button type="submit" class="bg-info p-2">Publish </button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>

@@ -20,6 +20,8 @@ class CreateHealthInstitutesTable extends Migration
             $table->string('p_o_box')->nullable();
             $table->string('location')->nullable();
             $table->string('image')->nullable();
+            $table->string('description')->nullable();
+            $table->string('website_link')->nullable();
             $table->timestamps();
         });
     }
