@@ -47,8 +47,8 @@
                         <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                             <div class="h-100">
                                 <h3 class="display-6 mb-5" style="font-size: 25px"><span
-                                        class="text-danger">*</span>{{ $item->title }} <span
-                                        class="text-danger">*</span></h3>
+                                        class="text-danger"></span>{{ $item->title }} <span
+                                        class="text-danger"></span></h3>
                                 <div class="bg-light border-bottom border-5 border-primary rounded p-4 mb-4">
                                     <p class="text-dark mb-2">{{ $item->description }}</p>
                                     <span class="text-primary">Published date, {{ $item->date }}</span>

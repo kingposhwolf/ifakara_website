@@ -93,7 +93,7 @@ class SitePagesController extends Controller
 
     public function gallery()
     {
-        $photosLibrary = PhotoLibrary::orderBy('date', 'desc')->get();
+        $photosLibrary = gallery::where('category', 'Photo')->orderBy('created_at', 'desc')->get();
 
         return view('pages.gallery', [
             'photosLibrary' => $photosLibrary,

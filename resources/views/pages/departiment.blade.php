@@ -37,6 +37,7 @@
                     <div class="intro-news-tab mt-4">
                     @foreach ($departments as $department)
                         <div class="card mt-3">
+                            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12 col-sm-4 col-md-3">
@@ -63,7 +64,7 @@
                                 </div>
                             </div>
 
-
+                            </div>
                         </div>
                         @endforeach
                     </div>

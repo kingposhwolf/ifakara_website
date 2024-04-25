@@ -42,7 +42,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row justify-content-end mb-2">
-                                        
+
                                         <div class="col-sm-6">
                                             <div class="text-sm-end">
                                                 {{-- <button type="button" class="btn btn-danger waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#custom-modal">Add Contact</button> --}}
@@ -95,7 +95,7 @@
                                                                 {{ $photo->name }}
                                                             </td>
                                                             <td>
-                                                                
+
                                                                 <img src="{{ asset('admin/assets/images/gallery/' . $photo->media) }}" alt="table-user"
                                                                     class="me-2" width="100px" height="50px">
                                                             </td>
@@ -195,9 +195,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
 
-                                    
+
+
                                     <ul class="pagination pagination-rounded justify-content-end mb-0 mt-2">
                                         <li class="page-item">
                                             <a class="page-link" href="javascript: void(0);" aria-label="Previous">
@@ -248,8 +248,7 @@
                                 <div class="row">
                                     <div class="col-6 mb-3">
                                         <label for="name" class="form-label">Media Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" required
-                                            placeholder="Enter name">
+                                        <input type="text" class="form-control" id="name" name="name" required placeholder="Enter name">
                                     </div>
                                     <div class="col-6 mb-3">
                                         <div class="dropdown">
@@ -268,12 +267,11 @@
                                     </div>
                                     <div class="col-12 mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Media</label>
-                                        <input type="file" class="form-control" id="exampleInputEmail1" name="media" required
-                                        >
+                                        <input type="file" class="form-control" id="exampleInputEmail1" name="media[]" required multiple>
                                     </div>
                                 </div>
                                 <div class="text-end">
-                                    <button type="submit" class="bg-info p-2">Publish </button>
+                                    <button type="submit" class="bg-info p-2">Publish</button>
                                 </div>
                             </form>
                         </div>

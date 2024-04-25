@@ -38,22 +38,42 @@ class GalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $gallery = new gallery();
-        if($request->hasFile('media')){
-            $file = $request->file('media');
+{
+    // Initialize an empty array to store the filenames
+    $filenames = [];
+
+    // Check if files are present in the request
+    if ($request->hasFile('media')) {
+        // Loop through each uploaded file
+        foreach ($request->file('media') as $file) {
+            // Get the original file extension
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
-            $file->move('admin/assets/images/gallery',$filename);
-            $gallery->media = $filename;
-        }
-        $gallery->category = $request->input('category');
-        $gallery->name = $request->input('name');
-        $gallery->description = $request->input('description');
-        if($gallery->save()){
-            return redirect('/admin/gallery')->with('status', 'Gallery Added SuccessFully!');
+            // Generate a unique filename using the current timestamp
+            $filename = time() . '_' . uniqid() . '.' . $ext;
+            // Move the file to the desired location
+            $file->move('admin/assets/images/gallery', $filename);
+            // Store the filename in the array
+            $filenames[] = $filename;
         }
     }
+
+    // Create a new gallery object
+    $gallery = new Gallery();
+    // Assign the filenames to the 'media' attribute
+    $gallery->media = json_encode($filenames);
+    // Assign other attributes from the request
+    $gallery->category = $request->input('category');
+    $gallery->name = $request->input('name');
+    $gallery->description = $request->input('description');
+
+    // Save the gallery object to the database
+    if ($gallery->save()) {
+        return redirect('/admin/gallery')->with('status', 'Gallery Added Successfully!');
+    } else {
+        // Handle the case where saving failed
+    }
+}
+
 
     /**
      * Display the specified resource.
@@ -95,14 +115,14 @@ class GalleryController extends Controller
             }
             $file = $request->file('media');
             $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;    
+            $filename = time().'.'.$ext;
             $file->move('admin/assets/images/gallery',$filename);
             $gallery->media = $filename;
         }
         $gallery->category = $request->input('category');
         $gallery->name = $request->input('name');
         $gallery->description = $request->input('description');
-        
+
         $gallery->update();
         return redirect('/admin/gallery')->with('status', 'Gallery was Updated successfully!');
     }
