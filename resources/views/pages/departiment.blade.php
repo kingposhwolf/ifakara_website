@@ -29,45 +29,75 @@
     </div>
     <!-- Page Header End -->
 
-
-    <!-- About Start -->
-    <div class="container-xxl py-5">
+    <section class="intro-news-area  mb-70 mt-4">
         <div class="container">
-            <div class="row g-5">
-                {{-- <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative overflow-hidden h-100" style="min-height: 400px;">
-                        <img class="position-absolute w-100 h-100 pt-5 pe-5" src="{{ asset('admin/assets/images/news/' . $news->image) }}" alt="" style="object-fit: cover;">
-                        <img class="position-absolute top-0 end-0 bg-white ps-2 pb-2" src="img/about-2.jpg" alt="" style="width: 200px; height: 200px;">
-                    </div>
-                </div> --}}
-                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="h-100">
-                        {{-- <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3 text-center">Huduma zetu</div> --}}
-                        <h1 class="display-6 mb-5 text-center">Idara </h1>
-                        {{-- <div class="bg-light border-bottom border-5 border-primary rounded p-4 mb-4">
-                            <p class="text-dark mb-2">{{ $news->initial_description }}</p>
-                            <span class="text-primary">Published date, {{ $news->news_date }}</span>
-                        </div> --}}
-                        <p class="mb-5 text-center" style="text-align: justify">Taarifa zinachakatwa</p>
-                        {{-- <a class="btn btn-primary py-2 px-3 me-3" href="{{route('contact')}}">
-                            wasilisani
-                            <div class="d-inline-flex btn-sm-square bg-white text-primary rounded-circle ms-2">
-                                <i class="fa fa-arrow-right"></i>
+            <div class="row justify-content-center mt-4">
+                <!-- Intro News Tabs Area -->
+                <div class="col-12 col-lg-12 col-md-12">
+                    <div class="intro-news-tab mt-4">
+                    @foreach ($departments as $department)
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-sm-4 col-md-3">
+                                        <div class="single-blog-post style-2 ">
+                                            <div class="blog-thumbnail mt-4">
+
+                                                <h6 class="mt-3" style="font-weight:600; color: black;">{{ $department->name }}
+
+                                                </h6>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-md-9">
+                                        <div class="single-blog-post style-2  mt-4">
+
+                                            <h6 class="mb-2"> Head  :&nbsp;&nbsp;&nbsp;{{$department->head}}</h6>
+                                            <p style="text-align: justify; color: black;">About :&nbsp;&nbsp;&nbsp;{{ $department->description }}</p>
+                                            <p class="mb-2"> Staffs  :&nbsp;&nbsp;&nbsp;{{$department->staffs}}</p>
+                                            <p><span class="text-primary">Office Location :&nbsp;&nbsp;&nbsp;{{ $department->location }}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </a> --}}
-                        {{-- <a class="btn btn-outline-primary py-2 px-3" href="">
-                            Contact Us
-                            <div class="d-inline-flex btn-sm-square bg-primary text-white rounded-circle ms-2">
-                                <i class="fa fa-arrow-right"></i>
-                            </div>
-                        </a> --}}
+
+
+                        </div>
+                        @endforeach
                     </div>
+
+
+                </div>
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination mt-4" style="float: right;">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
             </div>
+
+
         </div>
-    </div>
-    <!-- About End -->
- 
+        </div>
+    </section>
+
     <!-- Footer Start -->
     @include('layouts.footer')
     <!-- Footer End -->
@@ -78,7 +108,7 @@
 
 
     @include('assets.js')
-   
+
 </body>
 
 </html>

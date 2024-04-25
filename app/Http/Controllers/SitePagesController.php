@@ -9,10 +9,9 @@ use App\Models\health_institute;
 use App\Models\news;
 use App\Models\service;
 use App\Models\school;
-use App\Models\verse;
+use App\Models\diocese_department;
 use App\Models\PhotoLibrary;
 use App\Models\VideoLibrary;
-use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
 class SitePagesController extends Controller
@@ -36,7 +35,8 @@ class SitePagesController extends Controller
 
 
     public function departiment(){
-        return view('pages.departiment');
+        $departments = diocese_department::all();
+        return view('pages.departiment',compact('departments'));
     }
 
     public function contact(){

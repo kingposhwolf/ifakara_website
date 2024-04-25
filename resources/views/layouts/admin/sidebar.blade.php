@@ -51,10 +51,10 @@
             <li>
                 <a href="{{route('dashboard')}}">
                     <i data-feather="airplay"></i>
-                   
+
                     <span> Dashboards </span>
                 </a>
-                
+
             </li>
 
             <li class="menu-title">App</li>
@@ -135,7 +135,7 @@
                         <li>
                             <a href="{{route('admin_library_videos')}}">Videos</a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </li>
@@ -145,7 +145,7 @@
                     <i class="fa fa-bullhorn" aria-hidden="true"></i>
                      <span> Careers </span>
                 </a>
-                
+
             </li>
             <li>
                 <a href="#sidebarTasks" data-bs-toggle="collapse">
@@ -195,9 +195,9 @@
                         <li>
                             <a href="{{route('admin_DioceseDepartment')}}">Diocese Department</a>
                         </li>
-                        <li>
+                        {{--  <li>
                             <a href="{{route('admin_ParishDepartment')}}">Parish Department</a>
-                        </li>
+                        </li>  --}}
                     </ul>
                 </div>
             </li>
@@ -225,9 +225,9 @@
                 <a href="#sidebarTickets">
                     <i class="fa fa-phone" aria-hidden="true"></i>
                     <span>Contact us </span>
-                   
+
                 </a>
-              
+
             </li>
             <hr>
 
@@ -236,18 +236,18 @@
                     <i class="fa fa-comments" aria-hidden="true"></i>
                      <span> Feedback </span>
                 </a>
-                
+
             </li>
 
             <li>
                 <a href="#">
                     <i class="fa fa-question-circle" aria-hidden="true"></i>
-                   
+
                     <span> Help </span>
                 </a>
-                
+
             </li>
-         
+
         </ul>
 
     </div>

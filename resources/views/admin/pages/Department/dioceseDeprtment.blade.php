@@ -7,6 +7,12 @@
 <body class="loading"
     data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
 
+    @if(Session::has('status'))
+        <div class="alert {{ Session::get('status_class') }} alert-dismissible fade show" role="alert" style="position: fixed; top: 10%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ Session::get('status') }}
+        </div>
+    @endif
     <!-- Begin page -->
     <div id="wrapper">
 
@@ -36,7 +42,6 @@
                         </div>
                     </div>
                     <!-- end page title -->
-
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -71,36 +76,49 @@
                                                     <th>sn</th>
                                                     <th>Department Name</th>
                                                     <th>Head of Department</th>
-                                                    <th>Category</th>
+                                                    <th>Descriptions</th>
+                                                    <th>Staffs</th>
+                                                    <th>Location</th>
                                                     <th style="width: 82px;">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+
+                                                @foreach ($diocese_department as $department)
+
                                                 <tr>
                                                     <td class="table-user">
-                                                        1
+                                                        {{ $department->id }}
                                                     </td>
                                                     <td>
-                                                        Ifakara Dioceses Accountant 
+                                                        {{ $department->name }}
                                                     </td>
                                                     <td>
-                                                       Hakimu Ndaba
+                                                    {{ $department->head }}
                                                     </td>
                                                     <td>
-                                                        Accountant
+                                                    {{ $department->description }}
                                                     </td>
                                                     <td>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                                class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                                class="mdi mdi-delete"></i></a>
+                                                    {{ $department->staffs }}
+                                                    </td>
+                                                    <td>
+                                                    {{ $department->location }}
+                                                    </td>
+                                                    <td>
+                                                        <div class="row mt-1 text-center">
+                                                            <div class="col-6">
+                                                                <a href="{{ route('edit_DioceseDepartment', ['id' => $department->id]) }}" class="action-icon"> <i
+                                                                        class="mdi mdi-square-edit-outline"></i></a>
+
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <a href="{{ route('delete_DioceseDepartment', ['id' => $department->id]) }}" class="action-icon" onclick="return confirm('Are you sure you want to delete this staff?')"> <i class="mdi mdi-delete"></i></a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
-
-
-
-
-
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -155,33 +173,38 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body p-4">
-                            <form>
+                            <form action="{{ route('create_DioceseDepartment') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="mb-3 col-12">
                                         <label for="name" class="form-label">Department Name</label>
-                                        <input type="text" class="form-control" id="name"
+                                        <input type="text" class="form-control" id="name" name="name"
                                             placeholder="Enter Department Name">
                                     </div>
                                     <div class="mb-3 col-12">
-                                        <label for="name" class="form-label">Head of Department</label>
-                                        <input type="text" class="form-control" id="name"
-                                            placeholder="Enter Department Name">
+                                        <label for="head" class="form-label">Head of Department</label>
+                                        <input type="text" class="form-control" id="head" name="head"
+                                            placeholder="Enter Head of Department">
                                     </div>
-                                    {{-- <div class="mb-3 col-12 dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                          Category
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                          <li><a class="dropdown-item" href="#">Prayers</a></li>
-                                          <li><a class="dropdown-item" href="#">Accountant</a></li>
-                                        </ul>
-                                      </div> --}}
-    
+                                    <div class="mb-3 col-12">
+                                        <label for="staffs" class="form-label">Number of Staffs</label>
+                                        <input type="number" class="form-control" id="staffs" name="staffs"
+                                            placeholder="Enter Number of staffs in the Department">
+                                    </div>
+                                    <div class="mb-3 col-12">
+                                        <label for="location" class="form-label">Location</label>
+                                        <input type="text" class="form-control" id="location" name="location"
+                                            placeholder="Enter Department Location">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="description" class="form-label">About Department</label>
+                                        <textarea name="description" id="description" cols="12" rows="5" class="form-control" placeholder="Enter Department short Description" required></textarea>
+                                    </div>
                                     <div class="text-end">
                                         <button type="submit" class="bg-info p-2">Publish </button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>

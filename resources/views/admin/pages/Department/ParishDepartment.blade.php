@@ -81,7 +81,7 @@
                                                         1
                                                     </td>
                                                     <td>
-                                                        Ifakara Parish Accountant 
+                                                        Ifakara Parish Accountant
                                                     </td>
                                                     <td>
                                                        Hakimu Ndaba
@@ -176,12 +176,12 @@
                                           <li><a class="dropdown-item" href="#">Accountant</a></li>
                                         </ul>
                                       </div> --}}
-    
+
                                     <div class="text-end">
                                         <button type="submit" class="bg-info p-2">Publish </button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>

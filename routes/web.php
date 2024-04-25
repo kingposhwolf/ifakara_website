@@ -160,8 +160,12 @@ Route::get('/admin/Management_staff',[staffCotroller::class,'index_management'])
 Route::get('/admin/Historical_staff',[staffCotroller::class,'index_historical'])->name('admin_historical_staff');
 
 //Derpartment route
-Route::get('/admin/Diocese_Department',[ParishDepartmentController::class,'index'])->name('admin_ParishDepartment');
-Route::get('/admin/Parish_Department',[DioceseDepartmentController::class,'index'])->name('admin_DioceseDepartment');
+Route::get('/admin/Diocese_Department',[DioceseDepartmentController::class,'index'])->name('admin_DioceseDepartment');
+Route::post('/admin/create_DioceseDepartment/', [DioceseDepartmentController::class, 'create'])->name('create_DioceseDepartment');
+Route::get('/admin/delete_DioceseDepartment/{id}', [DioceseDepartmentController::class, 'destroy'])->name('delete_DioceseDepartment');
+Route::put('/admin/update_DioceseDepartment/{id}', [DioceseDepartmentController::class, 'update'])->name('update_DioceseDepartment');
+Route::get('/admin/edit_DioceseDepartment/{id}', [DioceseDepartmentController::class, 'edit'])->name('edit_DioceseDepartment');
+// Route::get('/admin/Parish_Department',[DioceseDepartmentController::class,'index'])->name('admin_DioceseDepartment');
 
 Route::get('/admin/research',[ResearchController::class,'index'])->name('admin_research');
 
