@@ -4,15 +4,15 @@
 <head>
     @include('layouts.admin.head')
 
-    <!-- third party css -->
-    <link href="../assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet"
+    {{--  <!-- third party css -->
+    <link href="{{ asset('admin/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="../assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet"
+    <link href="{{ asset('admin/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="../assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css" rel="stylesheet"
+    <link href="{{ asset('admin/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css') }}" rel="stylesheet"
         type="text/css" />
-    <!-- third party css end -->
+    <!-- third party css end -->  --}}
 
 
 
@@ -46,7 +46,7 @@
                         <div class="col-12">
                             <div class="page-title-box">
 
-                                <h4 class="page-title">Library</h4>
+                                <h4 class="page-title">Carrier</h4>
                             </div>
                         </div>
                     </div>
@@ -90,15 +90,12 @@
                                                     <img src="{{ asset('admin/assets/images/' . $career->image) }}" alt="user-pic" class="rounded-circle avatar-sm bx-shadow-lg" />
 
 
-                                                 </td>
-                                                 <td>
+                                                </td>
+                                                <td>
                                                     <a href="{{route('show_careers',$career->id)}}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                                 </td>
-                                             
-                                            </tr> 
+                                            </tr>
                                             @endforeach
-                                           
-                                            
 
                                         </tbody>
                                     </table>
@@ -152,17 +149,16 @@
                                     <input type="text" class="form-control" id="name" name="title"
                                         placeholder="Enter title of service">
                                 </div>
-    
+
                             </div>
-                          
+
                         </div>
-                       
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3 col-12">
                                     <label for="name" class="form-label">Image of Career</label>
-                                    <input type="file" class="form-control" id="name" name="image"
-                                        placeholder="Enter title of service">
+                                    <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -170,20 +166,20 @@
                                     <label for="name" class="form-label">Date</label>
                                     <input type="date" class="form-control" id="name" name="date"
                                         placeholder="Enter title of service">
-                                </div> 
+                                </div>
                             </div>
-                            
+
                         </div>
                         <div class="row">
-                          
+
                             <div class="mb-3">
                                 <label for="position" class="form-label">Short description</label>
                                 <textarea name="description" id="" cols="12" rows="5" class="form-control" required></textarea>
                             </div>
-                        
+
 
                         </div>
-                       
+
 
                         <div class="text-end">
                             <button type="submit" class="bg-info p-2">Publish </button>
@@ -201,12 +197,16 @@
     <script src="{{ asset('admin/assets/js/vendor.min.js') }}"></script>
 
     <!-- third party js -->
-    <script src="../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+
+    <script src="{{ asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+
     <script src="{{ asset('admin/assets/js/pages/form-wizard.init.js') }}"></script>
 
     <script src="{{ asset('admin/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
 
     <script src="{{ asset('admin/assets/js/pages/datatables.init.js') }}"></script>
+
+    {{--  <script src="{{ asset('admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>  --}}
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>

@@ -32,7 +32,7 @@
                     <div class="dropdown-menu m-0">
                         <a href="{{route('schools')}}" class="dropdown-item">Shule</a>
                         <a href="{{route('healths')}}" class="dropdown-item">Afya</a>
-                        <a href="#" class="dropdown-item">Utafiti</a>
+                        <a href="{{ route('research_institute') }}" class="dropdown-item">Utafiti</a>
                         <a href="{{route('departiment')}}" class="dropdown-item">Idara</a>
                         {{-- <a href="404.html" class="dropdown-item">404 Page</a> --}}
                     </div>
@@ -41,7 +41,7 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Maktaba</a>
                     <div class="dropdown-menu m-0">
                         <a href="{{route('album_picha')}}" class="dropdown-item">Picha</a>
-                        <a href="{{route('maktaba_video')}}" class="dropdown-item">Video</a>    
+                        <a href="{{route('maktaba_video')}}" class="dropdown-item">Video</a>
                         {{-- <a href="404.html" class="dropdown-item">404 Page</a> --}}
                     </div>
                 </div>

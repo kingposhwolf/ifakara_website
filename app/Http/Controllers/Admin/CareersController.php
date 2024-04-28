@@ -18,7 +18,8 @@ class CareersController extends Controller
         $careers = Career::get();
         return view('admin.pages.careers.admin_careers',[
             'careers'=>$careers
-        ]);
+
+        ])->with('status', 'careers Added SuccessFully!');
     }
 
     /**
@@ -38,7 +39,7 @@ class CareersController extends Controller
             $filename = time().'.'.$ext;
             $file->move('admin/assets/images/',$filename);
             $career->image = $filename;
-        } 
+        }
         if($career->save()){
             $careers = Career::get();
             return view('admin.pages.careers.admin_careers',[
@@ -106,7 +107,7 @@ class CareersController extends Controller
             $file->move('admin/assets/images/',$filename);
             $career->image = $filename;
         }
-        
+
 
         $career->update();
         $career = Career::get();

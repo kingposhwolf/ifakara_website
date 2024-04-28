@@ -65,7 +65,7 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table class="table table-centered table-nowrap table-hover mb-0">
+                                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                             <thead>
                                                 <tr>
                                                     <th>Sn</th>
@@ -119,7 +119,7 @@
                                         </table>
                                     </div>
 
-                                    <ul class="pagination pagination-rounded justify-content-end mb-0 mt-2">
+                                    {{--  <ul class="pagination pagination-rounded justify-content-end mb-0 mt-2">
                                         <li class="page-item">
                                             <a class="page-link" href="javascript: void(0);" aria-label="Previous">
                                                 <span aria-hidden="true">«</span>
@@ -142,7 +142,7 @@
                                                 <span class="visually-hidden">Next</span>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul>  --}}
 
                                 </div>
                                 <!-- end card-body-->
@@ -206,12 +206,12 @@
                                         <input type="date" class="form-control" id="name"
                                         name="end_date"  >
                                     </div>
-    
+
                                     <div class="text-end">
                                         <button type="submit" class="bg-info p-2">Publish </button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -241,6 +241,14 @@
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+
+    <!-- third party js -->
+    <script src="{{ asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/pages/form-wizard.init.js') }}"></script>
+
+    <script src="{{ asset('admin/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+
+    <script src="{{ asset('admin/assets/js/pages/datatables.init.js') }}"></script>
 
 </body>
 

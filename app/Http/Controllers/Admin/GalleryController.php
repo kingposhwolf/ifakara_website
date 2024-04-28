@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\gallery;
+use Illuminate\Support\Facades\Session;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -107,24 +109,46 @@ class GalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
+    try{
         $gallery = gallery::find($id);
-        if($request->hasFile('media')){
-            $path = 'admin/assets/images/gallery'.$gallery->image;
-            if(File::exists($path)){
-                File::delete($path);
-            }
-            $file = $request->file('media');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
-            $file->move('admin/assets/images/gallery',$filename);
-            $gallery->media = $filename;
-        }
-        $gallery->category = $request->input('category');
-        $gallery->name = $request->input('name');
-        $gallery->description = $request->input('description');
 
-        $gallery->update();
-        return redirect('/admin/gallery')->with('status', 'Gallery was Updated successfully!');
+        // Initialize an empty array to store the filenames
+        $filenames = [];
+
+        // Check if files are present in the request
+        if ($request->hasFile('media')) {
+            // Loop through each uploaded file
+        foreach ($request->file('media') as $file) {
+            // Get the original file extension
+            $ext = $file->getClientOriginalExtension();
+            // Generate a unique filename using the current timestamp
+            $filename = time() . '_' . uniqid() . '.' . $ext;
+            // Move the file to the desired location
+            $file->move('admin/assets/images/gallery', $filename);
+            // Store the filename in the array
+            $filenames[] = $filename;
+        }
+    }
+
+        // Assign the filenames to the 'media' attribute
+    $gallery->media = json_encode($filenames);
+    // Assign other attributes from the request
+    $gallery->category = $request->input('category');
+    $gallery->name = $request->input('name');
+    $gallery->description = $request->input('description');
+
+    $gallery->update();
+
+    Session::flash('status', 'Gallery updated Successfully!');
+    Session::flash('status_class', 'alert-success');
+
+    return redirect()->back();
+    } catch (\Exception $e) {
+        Session::flash('status', 'Failed to update: ' . $e->getMessage());
+        Session::flash('status_class', 'alert-danger');
+        return redirect()->back();
+    }
+
     }
 
     /**
@@ -134,15 +158,33 @@ class GalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $gallery = gallery::find($id);
-        if($gallery->image){
-            $path = 'admin/assets/images/gallery/'.$gallery->image;
-            if(File::exists($path)){
-                File::delete($path);
-            }
-        }
-        $gallery->delete();
-        return redirect('/admin/gallery')->with('status', 'Gallery deleted Successfully');
+{
+    // Find the gallery entry by its ID
+    $gallery = Gallery::find($id);
+
+    // Check if the gallery entry exists
+    if (!$gallery) {
+        // Handle the case where the gallery entry does not exist
+        return redirect('/admin/gallery')->with('error', 'Gallery not found!');
     }
+
+    // Delete the associated media files
+    $filenames = json_decode($gallery->media, true);
+    foreach ($filenames as $filename) {
+        // Delete the file from the server
+        if (file_exists(public_path('admin/assets/images/gallery/' . $filename))) {
+            unlink(public_path('admin/assets/images/gallery/' . $filename));
+        }
+    }
+
+    // Delete the gallery entry from the database
+    if ($gallery->delete()) {
+        // Redirect with success message
+        return redirect('/admin/gallery')->with('status', 'Gallery deleted successfully!');
+    } else {
+        // Handle the case where deletion failed
+        return redirect('/admin/gallery')->with('error', 'Failed to delete gallery!');
+    }
+}
+
 }

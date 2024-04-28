@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end page title --> 
+                    <!-- end page title -->
 
                     <div class="row mb-2">
                         <div class="col-sm-4">
@@ -87,7 +87,7 @@
                                         <b>Pulish Date</b> <small class="text-muted">{{ $photo->date }}</small>
                                     </p>
                                 </div>
-                                
+
                                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
@@ -114,12 +114,12 @@
                                         <span class="visually-hidden">Next</span>
                                     </a>
                                 </div>
-               
-                                
+
+
                             </div> <!-- end card-->
                         </div> <!-- end col -->
                         <div class="col-md-6">
-                           
+
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="text-center">Latest Uploads</h4>
@@ -127,7 +127,7 @@
                                 <div class="row">
                                     @foreach ($photosLibray as $latests)
                                     <div class="col-6">
-                                   
+
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $latests->title }}</h5>
                                             <p class="card-text">{{ $latests->description }}.</p>
@@ -162,11 +162,11 @@
                                                 <span class="visually-hidden">Next</span>
                                             </a>
                                         </div>
-                                   
+
                                     </div>
                                     @endforeach
                                 </div>
-                           
+
 
                             </div> <!-- end card-->
                         </div>
@@ -187,7 +187,7 @@
 
     </div>
     <!-- END wrapper -->
-    
+
     <div class="modal fade" tabindex="-1" role="dialog" id="confirmDeleteModal{{$photo->id}}">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -198,8 +198,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                   
-                    Are you sure you want to delete this blog? 
+
+                    Are you sure you want to delete this blog?
                     <h5> {{$photo->title}}.</h5>
                 </div>
                 <div class="modal-footer">
@@ -232,24 +232,24 @@
                                     <input type="text" class="form-control" id="name" name="title" value="{{$photo->title}}"
                                         placeholder="Enter title of service">
                                 </div>
-    
+
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 col-12">
                                     <label for="name" class="form-label">Date</label>
                                     <input type="date" class="form-control" id="name" name="date" value="{{$photo->date}}"
                                         placeholder="Enter title of service">
-                                </div> 
+                                </div>
                             </div>
                         </div>
-                       
+
                         <div class="row">
-                          
+
                             <div class="mb-3">
                                 <label for="position" class="form-label">Initial description</label>
-                                <textarea name="description" id="" cols="12" rows="5" class="form-control" required value={{$photo->description}}></textarea>
+                                <textarea name="description" id="" cols="12" rows="5" class="form-control" required>{{$photo->description}}</textarea>
                             </div>
-                        
+
 
                         </div>
                         <div class="row">
@@ -289,7 +289,7 @@
     </div>
 
 
- 
+
 
     <!-- Vendor js -->
     <script src="{{ asset('admin/assets/js/vendor.min.js') }}"></script>

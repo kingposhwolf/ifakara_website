@@ -30,7 +30,7 @@ class SitePagesController extends Controller
     }
 
     public function research(){
-        return view('pages.reseach_inst');
+        return view('pages.reseach_inst_old');
     }
 
 
@@ -93,7 +93,7 @@ class SitePagesController extends Controller
 
     public function gallery()
     {
-        $photosLibrary = gallery::where('category', 'Photo')->orderBy('created_at', 'desc')->get();
+        $photosLibrary = PhotoLibrary::orderBy('date', 'desc')->get();
 
         return view('pages.gallery', [
             'photosLibrary' => $photosLibrary,

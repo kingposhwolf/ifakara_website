@@ -70,20 +70,26 @@
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         <label for="exampleInputEmail1" class="form-label">Media</label>
-                                                        <input type="file" class="form-control" id="exampleInputEmail1" name="media" required
-                                                        >
+                                                        <input type="file" class="form-control" id="exampleInputEmail1" name="media[]" onchange="var img = document.getElementById('present-img'); img.hidden = true;" required multiple>
                                                     </div>
-                    
+                                                    @if ($gallery->media)
+                                                    <div id="present-img">
+                                                    @foreach (json_decode($gallery->media) as $index => $image)
+                                                        <img src="{{ asset('admin/assets/images/gallery/' . $image) }}" alt="table-user"
+                                                                class="me-2" style="max-width: 200px;">
+                                                    @endforeach
+                                                    </div>
+                                                            @endif
                                                     <div class="text-end">
                                                         <button type="submit" class="bg-info p-2">Publish </button>
                                                     </div>
                                                 </div>
-                                    
+
                                             </form>
                                         </div> <!-- end col -->
                                     </div>
                                     <!-- end row-->
-    
+
                                 </div>
                                 <!-- end card-body-->
                             </div>

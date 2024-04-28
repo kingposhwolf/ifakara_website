@@ -92,9 +92,9 @@
                         <li>
                             <a href="{{ route('admin_sermons') }}">Sermons</a>
                         </li>
-                        <li>
+                        {{--  <li>
                             <a href="{{ route('admin_gallery') }}">Gallery</a>
-                        </li>
+                        </li>  --}}
                     </ul>
                 </div>
             </li>

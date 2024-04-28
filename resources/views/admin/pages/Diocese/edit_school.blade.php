@@ -55,9 +55,9 @@
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         @if ($school->image)
-                                                    <img src="{{ asset('admin/assets/images/school/'.$school->image) }}" alt="News image" width="100" height="60" class="edicat-image">
+                                                    <img src="{{ asset('admin/assets/images/school/'.$school->image) }}" alt="News image" width="100" height="60" class="edicat-image" id="present-img">
                                                      @endif
-                                                    <input type="file" name="image" class="form-control">
+                                                    <input type="file" name="image" class="form-control" onchange="var img = document.getElementById('present-img'); img.hidden = true;">
                                                     </div>
                                                     <div class=" col-12 mb-3">
                                                         <label for="name" class="form-label">Head of School</label>

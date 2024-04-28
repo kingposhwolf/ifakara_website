@@ -95,9 +95,12 @@
                                                                 {{ $photo->name }}
                                                             </td>
                                                             <td>
-
-                                                                <img src="{{ asset('admin/assets/images/gallery/' . $photo->media) }}" alt="table-user"
+                                                                @if ($photo->media)
+                                                                @foreach (json_decode($photo->media) as $index => $image)
+                                                                <img src="{{ asset('admin/assets/images/gallery/' . $image) }}" alt="table-user"
                                                                     class="me-2" width="100px" height="50px">
+                                                                @endforeach
+                                                                @endif
                                                             </td>
                                                             <td>
                                                                 {{ $photo->description }}

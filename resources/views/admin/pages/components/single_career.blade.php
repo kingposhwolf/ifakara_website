@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end page title --> 
+                    <!-- end page title -->
 
                     <div class="row mb-2">
                         <div class="col-sm-4">
@@ -87,23 +87,23 @@
                                         <b>Pulish Date</b> <small class="text-muted">{{ $career->date }}</small>
                                     </p>
                                 </div>
-                                
+
                                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                   
+
                                     <div class="carousel-inner" role="listbox">
                                         <div class="carousel-item active">
                                             <img class="d-block img-fluid" src="{{ asset('admin/assets/images/' . $career->image) }}" alt="First slide">
                                         </div>
-                                        
+
                                     </div>
-                                    
+
                                 </div>
-               
-                                
+
+
                             </div> <!-- end card-->
                         </div> <!-- end col -->
                         <div class="col-md-6">
-                           
+
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="text-center">Latest Careers</h4>
@@ -111,7 +111,7 @@
                                 <div class="row">
                                     @foreach ($careers as $latests)
                                     <div class="col-6">
-                                   
+
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $latests->title }}</h5>
                                             <p class="card-text">{{ $latests->description }}.</p>
@@ -121,21 +121,21 @@
                                             </p>
                                         </div>
                                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                           
+
                                             <div class="carousel-inner" role="listbox">
                                                 <div class="carousel-item active">
                                                     <img class="d-block img-fluid" src="{{ asset('admin/assets/images/' . $latests->image) }}" alt="First slide">
                                                 </div>
-                                                
-                                            
+
+
                                             </div>
-                                           
+
                                         </div>
-                                   
+
                                     </div>
                                     @endforeach
                                 </div>
-                           
+
 
                             </div> <!-- end card-->
                         </div>
@@ -156,7 +156,7 @@
 
     </div>
     <!-- END wrapper -->
-    
+
     <div class="modal fade" tabindex="-1" role="dialog" id="confirmDeleteModal{{$career->id}}">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -167,8 +167,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                   
-                    Are you sure you want to delete this ? 
+
+                    Are you sure you want to delete this ?
                     <h5> {{$career->title}}.</h5>
                 </div>
                 <div class="modal-footer">
@@ -201,24 +201,24 @@
                                     <input type="text" class="form-control" id="name" name="title" value="{{$career->title}}"
                                         placeholder="Enter title of service">
                                 </div>
-    
+
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 col-12">
                                     <label for="name" class="form-label">Date</label>
                                     <input type="date" class="form-control" id="name" name="date" value="{{$career->date}}"
                                         placeholder="Enter title of service">
-                                </div> 
+                                </div>
                             </div>
                         </div>
-                       
+
                         <div class="row">
-                          
+
                             <div class="mb-3">
                                 <label for="position" class="form-label">Short description</label>
-                                <textarea name="description" id="" cols="12" rows="5" class="form-control" required value={{$career->description}}></textarea>
+                                <textarea name="description" id="" cols="12" rows="5" class="form-control" required>{{$career->description}}</textarea>
                             </div>
-                        
+
 
                         </div>
                         <div class="row">
@@ -229,7 +229,7 @@
                                         placeholder="Enter title of service" value="{{$career->image}}">
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="text-end">
@@ -245,7 +245,7 @@
     </div>
 
 
- 
+
 
     <!-- Vendor js -->
     <script src="{{ asset('admin/assets/js/vendor.min.js') }}"></script>
