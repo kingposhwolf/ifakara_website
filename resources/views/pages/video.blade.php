@@ -37,8 +37,9 @@
             </div>
 
             <div class="row g-4 justify-content-center">
+                @if ($videoLibrary->count() > 0)
                 @foreach ($videoLibrary as $item)
-           
+
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="causes-item d-flex flex-column bg-light border-top border-5 border-primary rounded-top overflow-hidden h-100">
                        <h5 class="text-center mt-4">{{$item->title}}</h5>
@@ -46,7 +47,7 @@
                             <img class="img-fluid" src="{{ asset('admin/assets/images/videos/' . $item->image) }}" alt="">
                             <div class="causes-overlay">
                                 <a class="btn btn-outline-primary" href="{{$item->link}}">
-                                    
+
                                     <div class="d-inline-flex btn-sm-square bg-primary text-white text-center rounded-circle">
                                         <i class="fa fa-play-circle" aria-hidden="true"></i>
 
@@ -56,17 +57,21 @@
                         </div>
                     </div>
                 </div>
-            
+
                 @endforeach
-               
-                
+                @else
+                    <div class="alert alert-info text-center">
+                        There are no videos available at the moment.
+                    </div>
+                @endif
+
             </div>
-           
-           
+
+
         </div>
     </div>
     <!-- Causes End -->
-  
+
     @include('layouts.footer')
 
 

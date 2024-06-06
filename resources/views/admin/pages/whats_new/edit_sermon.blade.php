@@ -50,35 +50,30 @@
                                                 <div class="row">
                                                     <div class="col-12 mb-3">
                                                         <label for="name" class="form-label">Title</label>
-                                                        <input type="text" class="form-control" id="name" name="sermons_title" required
-                                                        value="{{ $sermons->sermons_title }}">
+                                                        <input type="text" class="form-control" id="name" name="sermons_title" required value="{{ $sermons->sermons_title }}">
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         <label for="name" class="form-label">Priest</label>
-                                                        <input type="text" class="form-control" id="name" name="name" required
-                                                        value="{{ $sermons->name }}">
+                                                        <input type="text" class="form-control" id="name" name="name" required value="{{ $sermons->name }}">
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         <label for="exampleInputEmail1" class="form-label">Media</label>
-                                                        <input type="file" class="form-control" id="exampleInputEmail1" name="video" required
-                                                        value="{{ $sermons->video }}">
+                                                        <input type="file" class="form-control" id="exampleInputEmail1" name="video">
+                                                        <img style="border-radius: 10px; max-width: 25%;" src="{{ asset('admin/assets/video/sermons/' . $sermons->video) }}" alt="Sermon Video">
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         <label for="name" class="form-label">Youtube Link</label>
-                                                        <input type="text" class="form-control" id="name" name="utube_link" required
-                                                            value="{{ $sermons->utube_link }}">
+                                                        <input type="text" class="form-control" id="name" name="utube_link" required value="{{ $sermons->utube_link }}">
                                                     </div>
-                    
                                                     <div class="text-end">
                                                         <button type="submit" class="bg-info p-2">Publish </button>
                                                     </div>
                                                 </div>
-                                    
                                             </form>
                                         </div> <!-- end col -->
                                     </div>
                                     <!-- end row-->
-    
+
                                 </div>
                                 <!-- end card-body-->
                             </div>

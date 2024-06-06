@@ -35,7 +35,8 @@
                 <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">picha</div>
                 <h1 class="display-6 mb-5">Picha za matukio Mbalimbali yaliyo kuishwa kutokea jimboni</h1>
             </div>
-            @foreach ($photosLibrary as $photosLibrary )
+            @if ($photosLibrarys->count() > 0)
+            @foreach ($photosLibrarys as $photosLibrary )
 
             <div class="row g-4 justify-content-center">
 
@@ -135,6 +136,11 @@
                 </div>
             </div>
             @endforeach
+            @else
+                <div class="alert alert-info text-center">
+                    There are no images available at the moment.
+                </div>
+            @endif
 
         </div>
     </div>

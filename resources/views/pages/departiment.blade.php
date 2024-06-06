@@ -35,6 +35,7 @@
                 <!-- Intro News Tabs Area -->
                 <div class="col-12 col-lg-12 col-md-12">
                     <div class="intro-news-tab mt-4">
+                    @if ($departments->count() > 0)
                     @foreach ($departments as $department)
                         <div class="card mt-3">
                             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -67,6 +68,12 @@
                             </div>
                         </div>
                         @endforeach
+                    @else
+                        <div class="alert alert-info text-center">
+                            There are no department available at the moment.
+                        </div>
+                    @endif
+
                     </div>
 
 

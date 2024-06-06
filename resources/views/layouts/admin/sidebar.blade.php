@@ -115,7 +115,20 @@
                             <a href="{{route('admin_management_staff')}}">Management staff</a>
                         </li>
                         <li>
-                            <a href="{{route('admin_historical_staff')}}">Historical staff</a>
+                            <a href="#historicalStaffs" data-bs-toggle="collapse">
+                                <span> Historical staff </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="historicalStaffs">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="{{route('admin_historical_staff_executive')}}">Exacutive staff</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin_historical_staff_management')}}">Management staff</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>

@@ -65,7 +65,7 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
+                                        <table class="table table-centered table-nowrap table-hover dt-responsive mb-0" id="basic-datatable">
                                             <thead>
                                                 <tr>
                                                     <th>Sn</th>
@@ -118,31 +118,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-
-                                    {{--  <ul class="pagination pagination-rounded justify-content-end mb-0 mt-2">
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                                <span aria-hidden="true">«</span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link"
-                                                href="javascript: void(0);">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                                <span aria-hidden="true">»</span>
-                                                <span class="visually-hidden">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>  --}}
 
                                 </div>
                                 <!-- end card-body-->

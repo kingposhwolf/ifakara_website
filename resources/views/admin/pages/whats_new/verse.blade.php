@@ -65,43 +65,33 @@
                                     </div>
                                     <div class="row justify-content-between">
                                         @foreach ($verses as $verse)
-                                    <div class="col-10">
-                                        <div class="card card-body text-xs-center">
-                                            <h5 class="card-title">{{ $verse->servant }}</h5>
-                                            <p class="card-text">{{ $verse->verse }}</p>
-                                        </div>
+    <div class="col-10 verse" style="display: none;">
+        <div class="card card-body text-xs-center">
+            <h5 class="card-title">{{ $verse->servant }}</h5>
+            <p class="card-text">{{ $verse->verse }}</p>
+        </div>
+    </div>
+    <div class="col-2 action-icons" style="display: none;">
+        <a href="{{ url('/admin/edit_verse/'.$verse->id) }}" class="action-icon"> <i
+            class="mdi mdi-square-edit-outline"></i></a>
+        <a href="{{ url('/admin/delete_verse/'.$verse->id) }}" onclick="return confirm('Are you sure you want to delete?');" class="action-icon"> <i
+                class="mdi mdi-delete"></i></a>
+    </div>
+@endforeach
+
                                     </div>
-                                    <div class="col-2">
-                                        <a href="{{ url('/admin/edit_verse/'.$verse->id) }}" class="action-icon"> <i
-                                            class="mdi mdi-square-edit-outline"></i></a>
-                                    <a href="{{ url('/admin/delete_verse/'.$verse->id) }}" onclick="return confirm('Are you sure you want to delete?');" class="action-icon"> <i
-                                            class="mdi mdi-delete"></i></a>
-                                    </div>
-                                    @endforeach
-                                    </div>
-                                    <ul class="pagination pagination-rounded justify-content-end mb-0 mt-2">
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                                <span aria-hidden="true">«</span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link"
-                                                href="javascript: void(0);">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                                <span aria-hidden="true">»</span>
-                                                <span class="visually-hidden">Next</span>
-                                            </a>
-                                        </li>
+                                    <!-- Pagination -->
+                                    <ul id="pagination" class="pagination pagination-rounded justify-content-end mb-0 mt-2">
+                                        @php
+                                            $totalVerses = count($verses); // Assuming $verses is the collection of all verses
+                                            $versesPerPage = 5; // Adjust this based on your desired number of verses per page
+                                            $totalPages = ceil($totalVerses / $versesPerPage);
+                                        @endphp
+                                        @for ($i = 1; $i <= $totalPages; $i++)
+                                            <li class="page-item cun{{ $i }}">
+                                                <a class="page-link" href="#" data-page="{{ $i }}">{{ $i }}</a>
+                                            </li>
+                                        @endfor
                                     </ul>
                                 </div>
                                 <!-- end card-body-->
@@ -150,7 +140,7 @@
                 <!-- /.modal-dialog -->
             </div>
             <!-- /.modal -->
-            
+
 
             <!-- Footer Start -->
             @include('layouts.admin.footer')
@@ -169,6 +159,40 @@
 
 
     <script src="{{ asset('admin/assets/js/pages/crm-dashboard.init.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            var versesPerPage = 5; // Update with the desired number of verses per page
+            var $verses = $('.verse');
+            var $actionIcons = $('.action-icons');
+            var $paginationLinks = $('#pagination').find('.page-link');
+
+            // Function to display verses and corresponding action icons for a given page
+            function displayPage(pageNumber) {
+                var startIndex = (pageNumber - 1) * versesPerPage;
+                var endIndex = startIndex + versesPerPage;
+
+                $verses.hide().slice(startIndex, endIndex).show();
+                $actionIcons.hide().slice(startIndex, endIndex).show();
+
+                $('.active').removeClass('active');
+
+            $('.cun'+pageNumber).addClass('active');
+              //  $paginationLinks.removeClass('active'); // Remove active class from all pagination links
+              //  $paginationLinks.filter('[data-page="' + pageNumber + '"]').addClass('active'); // Add active class to the clicked pagination link
+            }
+
+            // Initial display of first page
+            displayPage(1);
+
+            // Handle pagination click events
+            $paginationLinks.on('click', function(event) {
+                event.preventDefault();
+                var pageNumber = parseInt($(this).data('page'));
+                displayPage(pageNumber);
+            });
+        });
+        </script>
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>

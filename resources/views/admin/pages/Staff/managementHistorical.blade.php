@@ -135,52 +135,31 @@
                     </div>
                 </div>
                 <!-- end page title -->
+                <div class="row">
+                    <div class="col-12">
+                                <div class="row justify-content-end">
+                                    <div class="col-auto">
+                                        <form>
+                                                <label for="search" class="visually-hidden">Search</label>
+                                                <input type="search" class="form-control" id="searchInput"
+                                                    placeholder="Search name/category ....">
+                                        </form>
+                                    </div>
+                                </div> <!-- end row -->
+                    </div><!-- end col-->
+                </div>
 
                 <div class="row">
                     <div class="container-fluid">
                         <!-- start page title -->
                         <div class="row">
                             <div class="col-12">
-                                <h5 class="page-title mb-3">Executive Staff</h5>
+                                <h5 class="page-title mb-3">Managements Staffs</h5>
                             </div>
                         </div>
                     </div>
-                    @foreach ($exactive_historical_staff as $exactive_historical_staff)
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <img src="{{ asset('admin/assets/images/staff/'. $exactive_historical_staff->image) }}" height="150px" width="150px" alt="logo"
-                                        class="mb-1">
-                                    <h4 class="mb-1 font-20">{{ $exactive_historical_staff->name }}</h4>
-                                    <p class="text-muted  font-14">{{ $exactive_historical_staff->category }}</p>
-                                </div>
-                                <div class="row mt-1 text-center">
-                                    <div class="col-6">
-                                        <a href="{{ url('admin/edit_staff/'.$exactive_historical_staff->id) }}" class="action-icon"> <i
-                                                class="mdi mdi-square-edit-outline"></i></a>
-
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="{{ url('admin/delete_staff/'.$exactive_historical_staff->id) }}" class="action-icon"> <i
-                                                class="mdi mdi-delete"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end card -->
-                    </div><!-- end col -->
-                    @endforeach
-                    <hr>
-                    <div class="container-fluid">
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <h5 class="page-title mb-3">Management Staff</h5>
-                            </div>
-                        </div>
-                    </div>
-                    @foreach ($management_historical_staff as $management_historical_staff)
-                    <div class="col-lg-3">
+                    @foreach ($management_historical_staffs as $management_historical_staff)
+                    <div class="col-lg-3 verse staff-card">
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center">
@@ -204,6 +183,19 @@
                         </div> <!-- end card -->
                     </div><!-- end col -->
                     @endforeach
+                    <!-- Pagination -->
+                                    <ul id="pagination" class="pagination pagination-rounded justify-content-end mb-0 mt-2">
+                                        @php
+                                            $totalStaffs = count($management_historical_staffs); // Assuming $verses is the collection of all verses
+                                            $staffsPerPage = 8; // Adjust this based on your desired number of verses per page
+                                            $totalPages = ceil($totalStaffs / $staffsPerPage);
+                                        @endphp
+                                        @for ($i = 1; $i <= $totalPages; $i++)
+                                            <li class="page-item cun{{ $i }}">
+                                                <a class="page-link" href="#" data-page="{{ $i }}">{{ $i }}</a>
+                                            </li>
+                                        @endfor
+                                    </ul>
                 </div>
                 <!-- end row -->
 
@@ -240,6 +232,61 @@
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            var versesPerPage = 8; // Update with the desired number of verses per page
+            var $verses = $('.verse');
+            var $actionIcons = $('.action-icons');
+            var $paginationLinks = $('#pagination').find('.page-link');
+
+            // Function to display verses and corresponding action icons for a given page
+            function displayPage(pageNumber) {
+                var startIndex = (pageNumber - 1) * versesPerPage;
+                var endIndex = startIndex + versesPerPage;
+
+                $verses.hide().slice(startIndex, endIndex).show();
+                $actionIcons.hide().slice(startIndex, endIndex).show();
+
+                $('.active').removeClass('active');
+
+            $('.cun'+pageNumber).addClass('active');
+            }
+
+            // Initial display of first page
+            displayPage(1);
+
+            // Handle pagination click events
+            $paginationLinks.on('click', function(event) {
+                event.preventDefault();
+                var pageNumber = parseInt($(this).data('page'));
+                displayPage(pageNumber);
+            });
+
+             // Function to filter staff cards based on search input
+            function filterStaff() {
+                var input = $('#searchInput').val().toLowerCase(); // Get input value and convert to lowercase
+                if (input === '') { // Check if input is empty
+                    var currentPage = parseInt($('#pagination').find('.active').find('.page-link').data('page')); // Get current page number
+                    displayPage(currentPage);
+                } else {
+                    $('.staff-card').each(function() { // Loop through each staff card
+                        var staffName = $(this).find('.font-20').text().toLowerCase(); // Get staff name and convert to lowercase
+                        var staffCategory = $(this).find('.font-14').text().toLowerCase(); // Get staff category and convert to lowercase
+                        // Check if input matches staff name or category
+                        if (staffName.indexOf(input) > -1 || staffCategory.indexOf(input) > -1) {
+                            $(this).show(); // Show staff card if there's a match
+                        } else {
+                            $(this).hide(); // Hide staff card if there's no match
+                        }
+                    });
+                }
+            }
+
+            // Call filterStaff function on keyup event in search input field
+            $('#searchInput').on('keyup', filterStaff);
+        });
+        </script>
 
 </body>
 

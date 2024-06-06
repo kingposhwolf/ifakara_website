@@ -157,7 +157,8 @@ Route::get('/admin/edit_staff/{id}', [staffCotroller::class, 'edit'])->name('edi
 Route::get('/admin/delete_staff/{id}', [staffCotroller::class, 'destroy'])->name('delete_staff');
 Route::put('/admin/update_staff/{id}', [staffCotroller::class, 'update'])->name('update_staff');
 Route::get('/admin/Management_staff',[staffCotroller::class,'index_management'])->name('admin_management_staff');
-Route::get('/admin/Historical_staff',[staffCotroller::class,'index_historical'])->name('admin_historical_staff');
+Route::get('/admin/Historical_staff/executive',[staffCotroller::class,'index_historical_executive'])->name('admin_historical_staff_executive');
+Route::get('/admin/Historical_staff/management',[staffCotroller::class,'index_historical_management'])->name('admin_historical_staff_management');
 
 //Derpartment route
 Route::get('/admin/Diocese_Department',[DioceseDepartmentController::class,'index'])->name('admin_DioceseDepartment');

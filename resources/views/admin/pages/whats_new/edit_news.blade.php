@@ -56,28 +56,34 @@
                                                     <div class="col-6 mb-3">
                                                         @if ($news->image)
                                                     <img src="{{ asset('admin/assets/images/news/'.$news->image) }}" alt="News image" width="200" height="150" class="edicat-image">
-                                                     @endif
+                                                    @endif
                                                     <input type="file" name="image" class="form-control">
                                                     </div>
+
                                                     <div class="col-6 mb-3">
                                                         <label for="position" class="form-label">Initial description</label>
                                                         <textarea name="initial_description" id="" cols="12" rows="7" class="form-control" required>{{ $news->initial_description }}</textarea>
+                                                    </div>
+                                                    <div class="mb-3 col-6">
+                                                        <label for="news_date" class="form-label">Start Date</label>
+                                                        <input type="date" class="form-control" id="news_date"
+                                                        name="news_date" value="{{ $news->news_date }}">
                                                     </div>
                                                     <div class="col-12 mb-3">
                                                         <label for="company" class="form-label">Description</label>
                                                         <textarea name="news_description" id="" cols="20" rows="5" class="form-control" required>{{ $news->news_description }}</textarea>
                                                     </div>
-                    
+
                                                     <div class="text-end">
                                                         <button type="submit" class="bg-info p-2">Publish </button>
                                                     </div>
                                                 </div>
-                                    
+
                                             </form>
                                         </div> <!-- end col -->
                                     </div>
                                     <!-- end row-->
-    
+
                                 </div>
                                 <!-- end card-body-->
                             </div>

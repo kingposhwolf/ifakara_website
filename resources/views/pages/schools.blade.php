@@ -33,6 +33,7 @@
 
 
     <!-- About Start -->
+    @if ($schools->count() > 0)
     @foreach ($schools as $school)
     <div class="container-xxl py-5">
         <div class="container">
@@ -66,6 +67,11 @@
         </div>
     </div>
     @endforeach
+    @else
+        <div class="alert alert-info text-center">
+            There are no schools available at the moment.
+        </div>
+    @endif
     <!-- About End -->
 
 

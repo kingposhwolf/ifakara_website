@@ -122,7 +122,7 @@
 
         <div class="content-page">
             <div class="content">
-
+                <!-- Add this input field for the search bar -->
                 <!-- Start Content-->
                 <div class="container-fluid">
 
@@ -141,7 +141,16 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row justify-content-end">
+                                <div class="row justify-content-between">
+                                    <div class="col-auto">
+                                        <form>
+                                            <div class="mb-2">
+                                                <label for="search" class="visually-hidden">Search</label>
+                                                <input type="search" class="form-control" id="searchInput"
+                                                    placeholder="Search name/category ....">
+                                            </div>
+                                        </form>
+                                    </div>
                                     <div class="col-md-4">
                                         <div class="text-md-end mt-3 mt-md-0">
 
@@ -160,8 +169,8 @@
                 <!-- end row -->
 
                 <div class="row">
-                    @foreach ($exactive_staff as $exactive_staff)
-                    <div class="col-lg-3">
+                    @foreach ($exactive_staffs as $exactive_staff)
+                    <div class="col-lg-3 verse staff-card">
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center">
@@ -187,7 +196,19 @@
                     @endforeach
                 </div>
                 <!-- end row -->
-
+                <!-- Pagination -->
+                                    <ul id="pagination" class="pagination pagination-rounded justify-content-end mb-0 mt-2">
+                                        @php
+                                            $totalStaffs = count($exactive_staffs); // Assuming $verses is the collection of all verses
+                                            $staffsPerPage = 8; // Adjust this based on your desired number of verses per page
+                                            $totalPages = ceil($totalStaffs / $staffsPerPage);
+                                        @endphp
+                                        @for ($i = 1; $i <= $totalPages; $i++)
+                                            <li class="page-item cun{{ $i }}">
+                                                <a class="page-link" href="#" data-page="{{ $i }}">{{ $i }}</a>
+                                            </li>
+                                        @endfor
+                                    </ul>
             </div> <!-- container -->
 
         </div> <!-- content -->
@@ -310,6 +331,60 @@
             }
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            var versesPerPage = 8; // Update with the desired number of verses per page
+            var $verses = $('.verse');
+            var $actionIcons = $('.action-icons');
+            var $paginationLinks = $('#pagination').find('.page-link');
+
+            // Function to display verses and corresponding action icons for a given page
+            function displayPage(pageNumber) {
+                var startIndex = (pageNumber - 1) * versesPerPage;
+                var endIndex = startIndex + versesPerPage;
+
+                $verses.hide().slice(startIndex, endIndex).show();
+                $actionIcons.hide().slice(startIndex, endIndex).show();
+
+                $('.active').removeClass('active');
+
+            $('.cun'+pageNumber).addClass('active');
+            }
+
+            // Initial display of first page
+            displayPage(1);
+
+            // Handle pagination click events
+            $paginationLinks.on('click', function(event) {
+                event.preventDefault();
+                var pageNumber = parseInt($(this).data('page'));
+                displayPage(pageNumber);
+            });
+
+             // Function to filter staff cards based on search input
+            function filterStaff() {
+                var input = $('#searchInput').val().toLowerCase(); // Get input value and convert to lowercase
+                if (input === '') { // Check if input is empty
+                    var currentPage = parseInt($('#pagination').find('.active').find('.page-link').data('page')); // Get current page number
+                    displayPage(currentPage);
+                } else {
+                    $('.staff-card').each(function() { // Loop through each staff card
+                        var staffName = $(this).find('.font-20').text().toLowerCase(); // Get staff name and convert to lowercase
+                        var staffCategory = $(this).find('.font-14').text().toLowerCase(); // Get staff category and convert to lowercase
+                        // Check if input matches staff name or category
+                        if (staffName.indexOf(input) > -1 || staffCategory.indexOf(input) > -1) {
+                            $(this).show(); // Show staff card if there's a match
+                        } else {
+                            $(this).hide(); // Hide staff card if there's no match
+                        }
+                    });
+                }
+            }
+
+            // Call filterStaff function on keyup event in search input field
+            $('#searchInput').on('keyup', filterStaff);
+        });
+        </script>
 
 </body>
 

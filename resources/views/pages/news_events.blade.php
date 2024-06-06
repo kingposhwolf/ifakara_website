@@ -37,9 +37,10 @@
                 {{-- <div class="d-inline-block rounded-pill bg-secondary text-primary py-1 px-3 mb-3">habari </div> --}}
                 <h1 class="display-6 mb-5">Habari na Matukio</h1>
             </div>
-           
+
 
             <div class="row g-4 justify-content-center mt-5">
+                @if ($news->count() >0)
                 @foreach ($news as $news)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div
@@ -67,7 +68,11 @@
                     </div>
                 </div>
                 @endforeach
-                
+                @else
+                    <div class="alert alert-info text-center">
+                        There are no news available at the moment.
+                    </div>
+                @endif
             </div>
 
         </div>

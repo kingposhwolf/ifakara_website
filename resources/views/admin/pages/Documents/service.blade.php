@@ -42,16 +42,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row justify-content-between mb-2">
-                                        <div class="col-auto">
-                                            <form>
-                                                <div class="mb-2">
-                                                    <label for="inputPassword2" class="visually-hidden">Search</label>
-                                                    <input type="search" class="form-control" id="inputPassword2"
-                                                        placeholder="Search...">
-                                                </div>
-                                            </form>
-                                        </div>
+                                    <div class="row justify-content-end mb-2">
                                         <div class="col-sm-6">
                                             <div class="text-sm-end">
                                                 {{-- <button type="button" class="btn btn-danger waves-effect waves-light mb-2" data-bs-toggle="modal" data-bs-target="#custom-modal">Add Contact</button> --}}
@@ -65,7 +56,7 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table class="table table-centered table-nowrap table-hover mb-0">
+                                        <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                                             <thead>
                                                 <tr>
                                                     <th>sn</th>
@@ -101,31 +92,6 @@
                                             </tbody>
                                         </table>
                                     </div>
-
-                                    <ul class="pagination pagination-rounded justify-content-end mb-0 mt-2">
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Previous">
-                                                <span aria-hidden="true">«</span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link"
-                                                href="javascript: void(0);">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">3</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">4</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript: void(0);">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript: void(0);" aria-label="Next">
-                                                <span aria-hidden="true">»</span>
-                                                <span class="visually-hidden">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
 
                                 </div>
                                 <!-- end card-body-->
@@ -179,12 +145,12 @@
                                         <label for="company" class="form-label">Description</label>
                                         <textarea name="description" id="" cols="12" rows="10" class="form-control" required></textarea>
                                     </div>
-    
+
                                     <div class="text-end">
                                         <button type="submit" class="bg-info p-2">Publish </button>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -214,6 +180,14 @@
 
     <!-- App js -->
     <script src="{{ asset('admin/assets/js/app.min.js') }}"></script>
+
+    <!-- third party js -->
+    <script src="{{ asset('admin/assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/pages/form-wizard.init.js') }}"></script>
+
+    <script src="{{ asset('admin/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') }}"></script>
+
+    <script src="{{ asset('admin/assets/js/pages/datatables.init.js') }}"></script>
 
 </body>
 

@@ -17,20 +17,26 @@ class staffCotroller extends Controller
      */
     public function index()
     {
-        $exactive_staff = staff::whereIn('category', ['Bishop', 'Assistant Bishop','Parishioner','Assistant Parishioner'])->where('status', '=', 'Active')->get();
-        return view('admin.pages.Staff.exactivestaff', compact('exactive_staff'));
+        $exactive_staffs = staff::whereIn('category', ['Bishop', 'Assistant Bishop','Parishioner','Assistant Parishioner'])->where('status', '=', 'Active')->get();
+        return view('admin.pages.Staff.exactivestaff', compact('exactive_staffs'));
     }
 
     public function index_management(){
-        $management = staff::whereIn('category', ['Chair Person', 'Assistant Chair Person', 'ssistant Secretary', 'Secretary', 'Assistant Treasurer', 'Treasurer'])
+        $managements = staff::whereIn('category', ['Chair Person', 'Assistant Chair Person', 'ssistant Secretary', 'Secretary', 'Assistant Treasurer', 'Treasurer'])
         ->where('status', '=', 'Active')->get();
-        return view('admin.pages.Staff.management', compact('management'));
+        return view('admin.pages.Staff.management', compact('managements'));
     }
 
-    public function index_historical(){
-        $exactive_historical_staff = staff::whereIn('category', ['Bishop', 'Assistant Bishop','Parishioner','Assistant Parishioner'])->where('status', '=', 'In Active')->get();
-        $management_historical_staff = staff::whereIn('category', ['Chair Person', 'Assistant Chair Person', 'ssistant Secretary', 'Secretary', 'Assistant Treasurer', 'Treasurer'])->where('status', '=', 'In Active')->get();
-        return view('admin.pages.Staff.historical', compact('exactive_historical_staff', 'management_historical_staff'));
+    public function index_historical_executive(){
+        $exactive_historical_staffs = staff::whereIn('category', ['Bishop', 'Assistant Bishop','Parishioner','Assistant Parishioner'])->where('status', '=', 'In Active')->get();
+
+        return view('admin.pages.Staff.executiveHistorical', compact('exactive_historical_staffs'));
+    }
+
+    public function index_historical_management(){
+        $management_historical_staffs = staff::whereIn('category', ['Chair Person', 'Assistant Chair Person', 'ssistant Secretary', 'Secretary', 'Assistant Treasurer', 'Treasurer'])->where('status', '=', 'In Active')->get();
+
+        return view('admin.pages.Staff.managementHistorical', compact('management_historical_staffs'));
     }
 
     /**

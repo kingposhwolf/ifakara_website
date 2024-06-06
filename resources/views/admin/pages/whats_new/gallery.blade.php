@@ -75,7 +75,7 @@
                                     <div class="tab-content">
                                         <div class="tab-pane" id="home-b2">
                                             <div class="table-responsive">
-                                                <table class="table table-centered table-nowrap table-hover mb-0">
+                                                <table class="table table-centered table-nowrap table-hover dt-responsive mb-0" id="basic-datatable">
                                                     <thead>
                                                         <tr>
                                                             <th>Sn</th>
